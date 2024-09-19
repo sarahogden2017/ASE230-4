@@ -1,7 +1,7 @@
 {
         {
-            'title'=>'The best comfort foods',
-            'content'=> "There's nothing quite like a comforting meal to soothe the soul. 
+            "title" : "The best comfort foods",
+            "content" : "There's nothing quite like a comforting meal to soothe the soul. 
                         Whether you're feeling down, celebrating a victory, or simply craving something familiar, comfort foods have a unique ability to make us feel at home.<br> 
                         Here are some of the most beloved comfort foods that never fail to hit the spot:<br>
                         Mac and Cheese:<br>
@@ -11,31 +11,31 @@
                         Pizza: <br>
                         A cheesy, saucy slice of pizza is always a crowd-pleaser. <br><br>
                         What are your favorite comfort foods? Share your thoughts in the comments below!",
-            'author'=>'Milo Adams',
-            'date'=>'09/12/2024',
+            "author" : "Milo Adams",
+            "date" : "09/12/2024",
         },
         {
-            'title'=>'Top 3 Video Games of 2024',
-	          'content'=>'Here are the top 3 video games of 2024:<br>
+        	"title" : "Top 3 Video Games of 2024",
+		"content" : "Here are the top 3 video games of 2024:<br>
 	                    <b>Astro Bot</b><br>
 	                    This game puts you in the body of a robot named Astro and has you explore a variety of planets to rescue Astro\'s lost robot friends. A creative game with amazing graphics! Astro Bot introduces new gameplay ideas and makes hundreds of references and homages to many other video games.<br>
 	                    <b>Star Wars Outlaws</b><br>
 	                    In this game, you play as Kay Vess, oung scoundrel with a price on her head looking for a big score. This gorgeous game relies on a combination of stealthy sneaking and blaster combat.<br>
 	                    <b>Price of Persia The Lost Crown</b><br>
 	                    This game is a reboot, but pulls from some of the best side-scrolling video games. You are put in the role of Sargon, an Immortal tasked with rescuing a prince. The controls are very intuitive and responds instantly.<br>',
-	        'author'=>'Kayla Saunders',
-	        'date'=>'09/12/2024'
+	        "author" : "Kayla Saunders",
+	        "date" : "09/12/2024"
         },
         {
-            'title'=>'Best Vacation Spots',
-            'content'=>'The best vacation spots are:</p>
+            "title" : "Best Vacation Spots",
+            "content" : "The best vacation spots are:</p>
                         <ol class="list-group list-group-numbered">
                             <li class="list-group-item">Rocky Mountains in Colorado</li>
                             <li class="list-group-item">Swimming with the Manatees in Florida</li>
                             <li class="list-group-item">Volcanos in Hawaii</li>
                         </ol>
-                        <p class="lead">When you go on vacation be sure to take lots of pictues, bring your friends, and enjoy the nice weather.',
-            'author'=>'Sarah Ogden',
-            'date'=>'09/16/2024'
+                        <p class="lead">When you go on vacation be sure to take lots of pictues, bring your friends, and enjoy the nice weather.",
+            "author" : "Sarah Ogden",
+            "date" : "09/16/2024"
         }
 }
