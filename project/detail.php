@@ -83,12 +83,12 @@
 			$new_line=[$line[0],++$line[1]];
 			$line = $new_line;
 		}
-		array_push($new_content, $line)
+		array_push($new_content, $line);
 	}
 	fclose($f);
 	$w = fopen($file, "w");
 	for (x=0, x<count($new_content), x++){
-		fputcsv($w, $new_content[x], ",", "\"")
+		fputcsv($w, $new_content[x], ",", "\"");
 	}
 	
 	echo "Number of Views: ".$second_line[1];
