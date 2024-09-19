@@ -42,7 +42,43 @@
             'author'=>'Sarah Ogden',
             'date'=>'09/16/2024'
         ]
-    ]
+    ];
+// Function to read current visitor file and return the count
+    function find_count($blog_id){
+	$file = "visitors.csv";
+	$f = fopen($file, "r");
+	$count=0;
+	$content=[];
+	while (!feof($f)){
+		$line=fgetcsv($f);
+		// Skip empty lines
+		if (!is_array($line)){
+			continue;
+		}
+		if ($line[0]==$blog_id){
+			// add current viewer to count
+			$new_line=[$line[0],++$line[1]];
+			$count=$new_line[1];
+			$line = $new_line;
+		}
+		// add each line to array
+		array_push($content, $line);
+	}
+	fclose($f);
+	// call the write function
+	write_new_count($content);
+	// if there is no count return "Unknown"
+	if ($count) return $count;
+	else return "Unknown";
+    };
+    function write_new_count($array){
+	$file = "visitors.csv";
+	$w = fopen($file, "w");
+	// write the new array into the csv file
+	for ($x=0; $x<count($array); $x++){
+		fputs($w, implode(",", $array[$x]).PHP_EOL);
+	}
+    }
 ?>
 
 <!DOCTYPE html>
@@ -71,28 +107,10 @@
     <?php } 
         $blog = $blog_array[$i];
         display_blog($blog['title'], $blog['author'], $blog['date'], $blog['content']);
+	// find the number of views and display it
+	$views=find_count($i);
+	echo "Number of Views: ".$views;
     ?>
-    // Viewer Count
-    <?php 
-	$file = "visitors.csv";
-	$f = fopen($file, "r");
-	while (!feof($f)){
-		$content=fgets($fp);
-		$line=explode(',',$content);
-		if ($line[0]==$_GET['post_id']){
-			$new_line=[$line[0],++$line[1]];
-			$line = $new_line;
-		}
-		array_push($new_content, $line);}
-	fclose($f);
-	$w = fopen($file, "w");
-	for (x=0, x<count($new_content), x++){
-		fputcsv($w, $new_content[x], ",", "\"");
-	}
-	
-	echo "Number of Views: ".$second_line[1];
-	fclose($w);
-  ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
 </html>
