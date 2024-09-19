@@ -45,39 +45,42 @@
     ];
 // Function to read current visitor file and return the count
     function find_count($blog_id){
-	$file = "visitors.csv";
-	$f = fopen($file, "r");
-	$count=0;
-	$content=[];
-	while (!feof($f)){
-		$line=fgetcsv($f);
-		// Skip empty lines
-		if (!is_array($line)){
-			continue;
+		$file = "visitors.csv";
+		$f = fopen($file, "r");
+		$count=0;
+		$content=[];
+		// get the first line 
+		$header =fgetcsv($f);
+		array_push($content, $header);
+		while(!feof($f)){
+			$line=fgetcsv($f);
+			// Skip empty lines
+			if (!is_array($line)){
+				continue;
+			}
+			if ($line[0]==$blog_id){
+				// add current viewer to count
+				$new_line=[$line[0],++$line[1]];
+				$count=$new_line[1];
+				$line = $new_line;
+			}
+			// add each line to array
+			array_push($content, $line);
 		}
-		if ($line[0]==$blog_id){
-			// add current viewer to count
-			$new_line=[$line[0],++$line[1]];
-			$count=$new_line[1];
-			$line = $new_line;
-		}
-		// add each line to array
-		array_push($content, $line);
-	}
-	fclose($f);
-	// call the write function
-	write_new_count($content);
-	// if there is no count return "Unknown"
-	if ($count) return $count;
-	else return "Unknown";
-    };
+		fclose($f);
+		// call the write function
+		write_new_count($content);
+		// if there is no count return "Unknown"
+		if (is_null($count)) return "Unknown";
+		else return $count;
+    }
     function write_new_count($array){
-	$file = "visitors.csv";
-	$w = fopen($file, "w");
-	// write the new array into the csv file
-	for ($x=0; $x<count($array); $x++){
-		fputs($w, implode(",", $array[$x]).PHP_EOL);
-	}
+		$file = "visitors.csv";
+		$w = fopen($file, "w");
+		// write the new array into the csv file
+		for ($x=0; $x<count($array); $x++){
+			fputs($w, implode(",", $array[$x]).PHP_EOL);
+		}
     }
 ?>
 
