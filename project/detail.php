@@ -72,7 +72,28 @@
         $blog = $blog_array[$i];
         display_blog($blog['title'], $blog['author'], $blog['date'], $blog['content']);
     ?>
-    
+    // Viewer Count
+    <?php 
+	$file = "visitors.csv";
+	$f = fopen($file, "r");
+	while (!feof($f)){
+		$content=fgets($fp);
+		$line=explode(',',$content);
+		if ($line[0]==$_GET['post_id']){
+			$new_line=[$line[0],++$line[1]];
+			$line = $new_line;
+		}
+		array_push($new_content, $line)
+	}
+	fclose($f);
+	$w = fopen($file, "w");
+	for (x=0, x<count($new_content), x++){
+		fputcsv($w, $new_content[x], ",", "\"")
+	}
+	
+	echo "Number of Views: ".$second_line[1];
+	fclose($w);
+    ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
 </html>
