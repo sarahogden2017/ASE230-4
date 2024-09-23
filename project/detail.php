@@ -107,13 +107,18 @@
         <div class="mb-4">
             <a href="index.php" class="btn btn-primary m-4">Back to index</a>
         </div>
-    <?php } 
-        $blog = $blog_array[$i];
-        display_blog($blog['title'], $blog['author'], $blog['date'], $blog['content']);
-	// find the number of views and display it
-	$views=find_count($i);
-	echo "Number of Views: ".$views;
-    ?>
+    <button type="button" class="btn btn-secondary">
+	    Number of Views
+	    <span class="badge bg-secondary">
+		    <?php }
+			$blog = $blog_array[$i];
+			display_blog($blog['title'], $blog['author'], $blog['date'], $blog['content']);
+			// find the number of views and display it
+			$views=find_count($i);
+			echo $views;
+		    ?>
+	    </span>
+     </button>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
 </html>
